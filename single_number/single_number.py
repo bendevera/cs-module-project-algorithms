@@ -3,17 +3,16 @@ Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
 def single_number(arr):
-    # Your code here
     memory = {}
-    potential = []
 
     for elem in arr:
         if elem in memory:
-            potential.remove(elem)
+            memory[elem] += 1
         else:
-            memory[elem] = True 
-            potential.append(elem)
-    return potential[0]
+            memory[elem] = 1
+    for elem in arr:
+        if memory[elem] == 1:
+            return elem
 
 
 if __name__ == '__main__':
